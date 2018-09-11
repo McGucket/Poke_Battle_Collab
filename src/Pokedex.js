@@ -1,20 +1,23 @@
+var header = require('./PicturesUsed/Pokedex.png');
 var React = require('react');
 var PropTypes = require('prop-types');
 var pokeApi = require('./api/pokeapi');
-var axios = require('axios');
+var Link = require('react-router-dom').Link;
 
 function GetPokemons(props) {
     console.log("List of Poke : ", this)
     return (
+        <div className='pokedexBack'>
             <ul className="dexList">
                 {props.pokemons.map(function (pokemon) {
                     return (
                         <li key={pokemon.dexNo}>
-                            <img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
+                            <Link to='/instructions'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
                         </li>
                     )
                 })}
             </ul>
+        </div>
     )
 }
 
@@ -28,10 +31,6 @@ class Pokedex extends React.Component {
     }
 
     componentDidMount() {
-        // axios.get("https://api.myjson.com/bins/1eln1c")
-        //     .then(res => {
-        //         this.setState({ pokemons: res.data.Pokemon });
-        //     });
         pokeApi.fetchAllPokemons()
             .then(function (pokemons) {
                 this.setState(function () {
@@ -49,13 +48,18 @@ class Pokedex extends React.Component {
     render() {
         console.log("List of Pokemons", this.state.pokemons)
         return (
-            <GetPokemons pokemons={this.state.pokemons} />
+            <div>
+                <img className="pokedex_header" src={header} alt="title" />
+                <h2 className='selectHeader'>Select a Pokemon to view its entry file</h2>
+
+                <GetPokemons pokemons={this.state.pokemons} />
+            </div>
         )
     }
 }
 
-// Pokedex.propTypes = {
-//     pokemons: PropTypes.array.isRequired
-// }
+Pokedex.propTypes = {
+    pokemons: PropTypes.array.isRequired
+}
 
 module.exports = Pokedex;
