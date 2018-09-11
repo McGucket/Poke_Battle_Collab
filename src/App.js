@@ -18,7 +18,8 @@ class App extends Component {
       <Nav />
       <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/instruction' component={Instructions}/>
+      <Route path='/Instructions' component={Instructions}/>
+      <Route path='/Pokedex' component={Pokedex}/>
       <Route render={function() {
                     return <p>Not Found</p>
                 }} />
