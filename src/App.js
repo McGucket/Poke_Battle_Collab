@@ -6,10 +6,13 @@ var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Nav = require('./Nav');
 var Switch = ReactRouter.Switch;
+var Pokedex = require('./Pokedex');
+
 
 class App extends Component {
   render() {
     return (
+
        <Router>
 <div className="App">
       <Nav />

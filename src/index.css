@@ -52,3 +52,19 @@ a{
   position: relative;
   left:120px;
 }
+
+ul{
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.dexList{
+  border: 1px solid black;
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
