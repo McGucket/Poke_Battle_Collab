@@ -38,7 +38,17 @@ a{
 
 .nav li{
   font-size: 40px;
+
 }
 
+.pokemonlogo
+{
+  position: relative;
+  top:-180px;
+  left:600px;
+}
 
-
+.button{
+  position: relative;
+  left:120px;
+}
