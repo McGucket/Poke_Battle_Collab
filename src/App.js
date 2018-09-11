@@ -7,6 +7,7 @@ var Route = ReactRouter.Route;
 var Nav = require('./Nav');
 var Switch = ReactRouter.Switch;
 var Pokedex = require('./Pokedex');
+var SelectPokemon = require('./SelectPokemon');
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
       <Route exact path='/' component={Home}/>
       <Route path='/Instructions' component={Instructions}/>
       <Route path='/Pokedex' component={Pokedex}/>
+      <Route path='/SelectPokemon' component={SelectPokemon}/>
       <Route render={function() {
                     return <p>Not Found</p>
                 }} />

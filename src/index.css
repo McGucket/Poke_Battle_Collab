@@ -78,14 +78,14 @@ a{
   right: 36%;
 }
 
-/*
+
 .instructions-container{
- position: relative;
- left:200px;
- top:-250px;
+ position: absolute;
+ right:220px;
+ bottom:100px;
  font-size: 30pt;
  text-align: center;
-} */
+}
 
 
 
@@ -96,6 +96,13 @@ a{
   right: 50%;
 }
 
+.pokemonbattle_header{
+  position: absolute;
+  top: 20px;
+  left: 45%;
+  right: 50%;
+}
+
 h2{
   text-align: center;
   width: fit-content;
@@ -103,4 +110,8 @@ h2{
   top: 18%;
   left: 48%;
   right: 50%;
+}
+
+.selectPokemonHeader{
+  left:51%;
 }
