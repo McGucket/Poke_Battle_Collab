@@ -9,7 +9,7 @@ function GetPokemons(props) {
             <ul className="dexList">
                 {props.pokemons.map(function (pokemon) {
                     return (
-                        <li key={pokemon.dexNo} onClick={() => saveDexNo(pokemon.pokemonName)}>
+                        <li key={pokemon.id} onClick={() => saveDexNo(pokemon.id)}>
                             <Link to='#'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
                         </li>
                     )
@@ -21,7 +21,9 @@ function GetPokemons(props) {
 
 
 function saveDexNo(pokedexNo) {
-    return sessionStorage.setItem('pokeName', pokedexNo);
+    sessionStorage.setItem('pokeId', pokedexNo);
+    pokeApi.getPokedexData();
+    return console.log("Retrieving Pokemon Data...")
 }
 
 class Pokedex extends React.Component {
@@ -31,12 +33,11 @@ class Pokedex extends React.Component {
         this.state = {
             pokemons: [],
             pokeResult: [],
-            pokeEntry: ""
+            pokeId: null
         };
     }
 
     componentDidMount() {
-        pokeApi.getPokedexData();
         pokeApi.fetchAllPokemons()
             .then(function (pokemons) {
                 this.setState(function () {
