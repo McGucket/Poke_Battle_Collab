@@ -4,21 +4,7 @@ var PropTypes = require('prop-types');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
 
-// class SelectHeroPokemon extends React.Component{
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//             heroPokemon:""
-//         }
-//     }
 
-//     render(){
-//         return(
-            
-//         )
-//     }
-
-// }
 
 
 function GetPokemons(props) {
@@ -51,14 +37,10 @@ class SelectPokemon extends React.Component {
             pokemons: []
         }
 
-        // this.handleClick = this.handleClick.bind(this);
+
     }
 
-    // handleClick(index) {
-    //     this.setState(function () {
-    //         sessionStorage.setItem('')
-    //     });
-    // }
+   
 
     componentDidMount() {
         pokeApi.fetchAllPokemons()
