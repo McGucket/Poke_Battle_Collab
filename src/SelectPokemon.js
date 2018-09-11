@@ -26,9 +26,9 @@ function GetPokemons(props) {
     return (
         <div className='pokedexBack'>
             <ul className="dexList">
-                {props.pokemons.map(function (pokemon,index) {
+                {props.pokemons.map(function (pokemon) {
                     return (
-                        <li key={index}>
+                        <li key={pokemon.dexNo} onClick={() => saveDexNo(pokemon.pokemonName)}>
                             <Link to='/instructions'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
                         </li>
                     )
@@ -36,6 +36,10 @@ function GetPokemons(props) {
             </ul>
         </div>
     )
+}
+
+function saveDexNo(pokedexNo) {
+    return sessionStorage.setItem('pokeName', pokedexNo);
 }
 
 
