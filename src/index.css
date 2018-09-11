@@ -53,14 +53,6 @@ a{
   left:120px;
 }
 
-ul{
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-}
-
 .dexList{
   border: 1px solid black;
   max-width: 600px;
@@ -68,3 +60,13 @@ li {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.instructions-container{
+ position: relative;
+ left:200px;
+ top:-250px;
+ font-size: 30pt;
+ text-align: center;
+}
+
+
