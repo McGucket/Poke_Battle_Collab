@@ -10,6 +10,7 @@ body {
   background-image: url("./PicturesUsed/Background.png");
   background-size: 1300px 845px;
   background-repeat: no-repeat;
+  max-width: 1600px;
 }
 
 ul{
@@ -29,7 +30,6 @@ a{
   display: block;
   line-height: 80px;
   text-decoration: none;
-
 }
 
 .active {
@@ -45,7 +45,7 @@ a{
 {
   position: relative;
   top:-180px;
-  left:600px;
+  left:550px;
 }
 
 .button{
@@ -54,19 +54,53 @@ a{
 }
 
 .dexList{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   max-width: 600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  /* background-color: #f1f1f1; */
+  position: absolute;
+  top: 8%;
+  right: 10%;
+  left: 12%;
 }
 
+.pokedexBack{
+  background-image: url('./PicturesUsed/Pokedex_back.png');
+  background-size: 800px 586px;
+  background-repeat: no-repeat;
+  height: 586px;
+  width: 800px;
+  position: absolute;
+  top: 25%;
+  left: 36%;
+  right: 36%;
+}
+
+/*
 .instructions-container{
  position: relative;
  left:200px;
  top:-250px;
  font-size: 30pt;
  text-align: center;
+} */
+
+
+
+.pokedex_header{
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: 50%;
 }
 
-
+h2{
+  text-align: center;
+  width: fit-content;
+  position: absolute;
+  top: 18%;
+  left: 48%;
+  right: 50%;
+}
