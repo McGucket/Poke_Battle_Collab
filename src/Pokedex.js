@@ -1,18 +1,16 @@
 var header = require('./PicturesUsed/Pokedex.png');
 var React = require('react');
-var PropTypes = require('prop-types');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
 
 function GetPokemons(props) {
-    console.log("List of Poke : ", this)
     return (
         <div className='pokedexBack'>
             <ul className="dexList">
                 {props.pokemons.map(function (pokemon) {
                     return (
-                        <li key={pokemon.dexNo}>
-                            <Link to='/instructions'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
+                        <li key={pokemon.dexNo} onClick={() => saveDexNo(pokemon.pokemonName)}>
+                            <Link to='#'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
                         </li>
                     )
                 })}
@@ -21,16 +19,24 @@ function GetPokemons(props) {
     )
 }
 
+
+function saveDexNo(pokedexNo) {
+    return sessionStorage.setItem('pokeName', pokedexNo);
+}
+
 class Pokedex extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            pokemons: []
+            pokemons: [],
+            pokeResult: [],
+            pokeEntry: ""
         };
     }
 
     componentDidMount() {
+        pokeApi.getPokedexData();
         pokeApi.fetchAllPokemons()
             .then(function (pokemons) {
                 this.setState(function () {
@@ -38,15 +44,10 @@ class Pokedex extends React.Component {
                         pokemons
                     }
                 });
-            }.bind(this))
+            }.bind(this));
     }
 
-
-
-
-
     render() {
-        console.log("List of Pokemons", this.state.pokemons)
         return (
             <div>
                 <img className="pokedex_header" src={header} alt="title" />
@@ -56,10 +57,6 @@ class Pokedex extends React.Component {
             </div>
         )
     }
-}
-
-Pokedex.propTypes = {
-    pokemons: PropTypes.array.isRequired
 }
 
 module.exports = Pokedex;
