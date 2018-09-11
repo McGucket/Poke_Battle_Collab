@@ -53,14 +53,6 @@ a{
   left:120px;
 }
 
-ul{
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-}
-
 .dexList{
   /* border: 1px solid black; */
   max-width: 600px;
@@ -85,6 +77,17 @@ li {
   left: 36%;
   right: 36%;
 }
+
+/*
+.instructions-container{
+ position: relative;
+ left:200px;
+ top:-250px;
+ font-size: 30pt;
+ text-align: center;
+} */
+
+
 
 .pokedex_header{
   position: absolute;
