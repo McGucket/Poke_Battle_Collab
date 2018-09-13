@@ -11,6 +11,7 @@ body {
   background-size: 1300px 845px;
   background-repeat: no-repeat;
   max-width: 1600px;
+  max-height:845px;
 }
 
 ul{
@@ -115,3 +116,99 @@ h2{
 .selectPokemonHeader{
   left:51%;
 }
+
+.entry_layout{
+  background-color: #f1f1f1;
+  border: black solid 2px;
+  border-radius: 20px;
+  width: 588px;
+  height: 392px;
+  margin-top: 75px;
+  margin-left: 106px;
+}
+
+.entry_head {
+  color: white;
+  text-align: right;
+  background-color: #0280bb;
+  padding: 5px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 2px solid black;
+  margin-left: -2px;
+  margin-top: -2px;
+  width: 578px;
+}
+
+.entry_head a:hover {
+  font-weight: bold;
+}
+
+.entry_desc{
+  /* position: relative; */
+  width: 508px;
+  height: 84px;
+  border: 1px solid black;
+  border-left: 20px solid #0280bb;
+  border-right: 20px solid #0280bb;
+  border-radius: 20px;
+  background-color: #c5c5c5;
+  margin: 0 auto;
+  margin-top: -25px;
+  padding: 15px;
+}
+
+.entry_left{
+  width: fit-content;
+  height: fit-content;
+  border-right: 1px solid black;
+}
+
+.entry_float{
+  border:1px solid black;
+  height:230px;
+}
+
+.pokedexNumber{
+  font-size:25px;
+  position: relative;
+  left:360px;
+  bottom:297px;
+  font-weight: bold
+}
+
+.pokemonName{
+  font-size:25px;
+  position: relative;
+  font-weight: bold;
+  bottom:350px;
+  left:430px;
+}
+
+.pokeballpicture{
+  position: relative;
+  left:290px;
+  bottom:230px;
+}
+
+.pokemonType{
+  position: relative;
+  font-weight: bold;
+  font-size:20px;
+  text-align: center;
+  left:415px;
+  bottom:370px;
+  border: 2px solid #000000;
+  width:70px;
+  border-radius: 40px;
+}
+
+.pokemonCategory{
+  position: relative;
+  font-weight: bold;
+  font-size:20px;
+  text-align: center;
+  bottom:360px;
+  left:160px;
+}
+
