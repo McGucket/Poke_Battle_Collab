@@ -2,13 +2,13 @@ var header = require('./PicturesUsed/Pokedex.png');
 var React = require('react');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
+var PropTypes = require('prop-types');
 
 function GetPokemons(props) {
     return (
         <div className='pokedexBack'>
             <ul className="dexList">
                 {props.pokemons.map(function (pokemon) {
-                    console.log(props.debug)
                     return (
                         <li key={pokemon.id} onClick={() => saveDexNo(pokemon.id)}>
                             <Link to={'/Entry/' + pokemon.id}><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
@@ -18,6 +18,10 @@ function GetPokemons(props) {
             </ul>
         </div>
     )
+}
+
+GetPokemons.propTypes = {
+    pokemons: PropTypes.array.isRequired
 }
 
 

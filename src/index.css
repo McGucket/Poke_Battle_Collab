@@ -237,3 +237,6 @@ h2{
 }
 
 
+.select_pokemon {
+  cursor: pointer;
+}

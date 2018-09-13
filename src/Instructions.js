@@ -19,7 +19,7 @@ class Instructions extends React.Component{
         <p>3) Select moves provided for your pokemon and get<br></br> the enemy pokemons health to 0 to win!</p>
 
          <Link className='Instructionbutton' to='/SelectPokemon'>
-            <img src={this.state.img} onMouseEnter={() => {
+            <img src={this.state.img} alt='btn to go to select screen' onMouseEnter={() => {
                                                      this.setState({ img:require('./PicturesUsed/HalfOpenPokeballPikachu.png')
                                                                     })
                                                           }} onMouseLeave={() => {

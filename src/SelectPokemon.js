@@ -3,7 +3,6 @@ var React = require('react');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
 var PropTypes = require('prop-types');
-var queryString = require('query-string');
 
 class GetCharacters extends React.Component {
     constructor(props) {
@@ -41,7 +40,7 @@ class GetCharacters extends React.Component {
                         {this.props.pokemons.map((pokemon) => {
                             return (
                                 <li key={pokemon.id}>
-                                    <img id={pokemon.id} onClick={this.handleOnClick.bind(this)} src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
+                                    <img className='select_pokemon' id={pokemon.id} onClick={this.handleOnClick.bind(this)} src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
                                 </li>
 
                             )

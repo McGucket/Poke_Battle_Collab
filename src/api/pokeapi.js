@@ -19,7 +19,6 @@ module.exports = {
                     if(pokemon.id === parseInt(entryId))
                     return pokemon;
                 })
-                console.log('Entry: ', pokeArr);
                 return pokeArr;
             });
     }
