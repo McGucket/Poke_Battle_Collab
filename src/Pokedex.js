@@ -8,6 +8,7 @@ function GetPokemons(props) {
         <div className='pokedexBack'>
             <ul className="dexList">
                 {props.pokemons.map(function (pokemon) {
+                    console.log(props.debug)
                     return (
                         <li key={pokemon.id} onClick={() => saveDexNo(pokemon.id)}>
                             <Link to={'/Entry/' + pokemon.id}><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
@@ -41,7 +42,7 @@ class Pokedex extends React.Component {
             .then(function (pokemons) {
                 this.setState(function () {
                     return {
-                        pokemons
+                        pokemons:pokemons
                     }
                 });
             }.bind(this));
@@ -53,7 +54,7 @@ class Pokedex extends React.Component {
                 <img className="pokedex_header" src={header} alt="title" />
                 <h2 className='selectHeader'>Select a Pokemon to view its entry file</h2>
 
-                <GetPokemons pokemons={this.state.pokemons} />
+                <GetPokemons pokemons={this.state.pokemons}/>
             </div>
         )
     }

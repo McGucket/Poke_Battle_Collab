@@ -1,31 +1,71 @@
 var header = require('./PicturesUsed/PokeBattleTitle.png');
 var React = require('react');
-var PropTypes = require('prop-types');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
+var PropTypes = require('prop-types');
+var queryString = require('query-string');
+
+class GetCharacters extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            battleArr: [],
+            counter: 0
+        }
+
+        this.handleOnClick = this.handleOnClick.bind(this);
+    }
+
+    handleOnClick(event) {
+        let id = event.target.id
+        this.setState({
+            battleArr: [this.state.battleArr, id],
+            // battleArr:[id]
+            counter: this.state.counter + 1
+
+        }, () => console.log(this.state.battleArr[1]))
+
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.counter === 0 ?
+                    <h2 className='selectPokemonHeader'>Choose Your Pokemon!</h2>
+                    :
+                    <h2 className='selectPokemonHeader2'>Choose Enemy Pokemon! (Press the Pokeball when done!)</h2>
+                }
+                <div className='pokedexBack'>
+                    <ul className="dexList">
+                        {this.props.pokemons.map((pokemon) => {
+                            return (
+                                <li key={pokemon.id}>
+                                    <img id={pokemon.id} onClick={this.handleOnClick.bind(this)} src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
+                                </li>
+
+                            )
+                        })}
 
 
-
-
-function GetPokemons(props) {
-    console.log("List of Poke : ", this)
-    return (
-        <div className='pokedexBack'>
-            <ul className="dexList">
-                {props.pokemons.map(function (pokemon) {
-                    return (
-                        <li key={pokemon.dexNo} onClick={() => saveDexNo(pokemon.pokemonName)}>
-                            <Link to='/instructions'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-    )
+                    </ul>
+                </div>
+                {this.state.counter === 2 &&
+                <div className='battleBTN'>
+                    <Link className='battleLink' to={{
+                        pathname: '/Battle',
+                        search: '?HeroPokemon=' + this.state.battleArr[1] + '&EnemyPokemon=' + this.state.battleArr[0][1]
+                    }}>Battle</Link>
+                </div>}
+            </div>
+        );
+    }
 }
 
-function saveDexNo(pokedexNo) {
-    return sessionStorage.setItem('pokeName', pokedexNo);
+GetCharacters.propTypes = {
+    id: PropTypes.number,
+    imgSrcFront: PropTypes.string,
+    pokemonName: PropTypes.string
 }
 
 
@@ -34,13 +74,13 @@ class SelectPokemon extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pokemons: []
+            pokemons: [],
+            selectPokemons: []
         }
-
-
     }
 
-   
+
+
 
     componentDidMount() {
         pokeApi.fetchAllPokemons()
@@ -51,24 +91,19 @@ class SelectPokemon extends React.Component {
                     }
                 });
             }.bind(this))
+
     }
 
 
     render() {
-        console.log("List of Pokemons", this.state.pokemons)
         return (
             <div>
                 <img className="pokemonbattle_header" src={header} alt="title" />
-                <h2 className='selectPokemonHeader'>Choose Your Pokemon!</h2>
+                <GetCharacters pokemons={this.state.pokemons} />
 
-                <GetPokemons pokemons={this.state.pokemons} />
             </div>
         )
     }
-}
-
-SelectPokemon.propTypes = {
-    pokemons: PropTypes.array.isRequired
 }
 
 module.exports = SelectPokemon;
