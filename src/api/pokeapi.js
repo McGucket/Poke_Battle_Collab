@@ -1,5 +1,4 @@
 var axios = require('axios');
-var PropTypes = require('prop-types');
 var jsonURL = "http://localhost:3000/Pokemon"; //Not really needed, link is already a URL
 
 module.exports = {

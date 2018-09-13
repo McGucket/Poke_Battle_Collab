@@ -2,47 +2,70 @@ var header = require('./PicturesUsed/PokeBattleTitle.png');
 var React = require('react');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
+var PropTypes = require('prop-types');
+var queryString = require('query-string');
 
-
-class PlayerInput extends React.Component{
-    constructor(props){
+class GetCharacters extends React.Component {
+    constructor(props) {
         super(props);
 
-        this.state={
-            pokemonId: 0
+        this.state = {
+            battleArr: [],
+            counter: 0
         }
-        this.handleClick = this.handleClick.bind(this);
+
+        this.handleOnClick = this.handleOnClick.bind(this);
     }
 
-    handleClick(event){
-      
+    handleOnClick(event) {
+        let id = event.target.id
+        this.setState({
+            battleArr: [this.state.battleArr, id],
+            // battleArr:[id]
+            counter: this.state.counter + 1
+
+        }, () => console.log(this.state.battleArr[1]))
+
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.counter === 0 ?
+                    <h2 className='selectPokemonHeader'>Choose Your Pokemon!</h2>
+                    :
+                    <h2 className='selectPokemonHeader2'>Choose Enemy Pokemon! (Press the Pokeball when done!)</h2>
+                }
+                <div className='pokedexBack'>
+                    <ul className="dexList">
+                        {this.props.pokemons.map((pokemon) => {
+                            return (
+                                <li key={pokemon.id}>
+                                    <img id={pokemon.id} onClick={this.handleOnClick.bind(this)} src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
+                                </li>
+
+                            )
+                        })}
+
+
+                    </ul>
+                </div>
+                {this.state.counter === 2 &&
+                <div className='battleBTN'>
+                    <Link className='battleLink' to={{
+                        pathname: '/Battle',
+                        search: '?HeroPokemon=' + this.state.battleArr[1] + '&EnemyPokemon=' + this.state.battleArr[0][1]
+                    }}>Battle</Link>
+                </div>}
+            </div>
+        );
     }
 }
 
-
-
-function GetPokemons(props) {
-
-    return (
-        <div className='pokedexBack'>
-            <ul className="dexList">
-                {props.pokemons.map(function (pokemon) {
-                    return (
-                        <li key={pokemon.id} onClick={() => saveDexNo(pokemon.id)}>
-                            <Link to='#'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
-                        </li>
-
-                    )
-                })}
-
-
-            </ul>
-        </div>
-    )
-}
-
-function saveDexNo(pokedexNo) {
-    return sessionStorage.setItem('userPokeId', pokedexNo);
+GetCharacters.propTypes = {
+    id: PropTypes.number,
+    imgSrcFront: PropTypes.string,
+    pokemonName: PropTypes.string
 }
 
 
@@ -52,10 +75,11 @@ class SelectPokemon extends React.Component {
         super(props);
         this.state = {
             pokemons: [],
-            display: true
+            selectPokemons: []
         }
-        this.handleDisplay= this.handleDisplay.bind(this);
     }
+
+
 
 
     componentDidMount() {
@@ -67,32 +91,16 @@ class SelectPokemon extends React.Component {
                     }
                 });
             }.bind(this))
-            
-    }
 
-    handleDisplay() {
-        return(
-        this.setState({
-            display: false
-        })
-        )
     }
 
 
     render() {
-
         return (
             <div>
-                    <img className="pokemonbattle_header" src={header} alt="title" />
-                    {!sessionStorage.getItem('userPokeId') ? 
-                    <h2 className='selectPokemonHeader'>Choose Your Pokemon!</h2>
-                     :
-                   <h2 className='selectPokemonHeader'>Choose Enemy Pokemon!</h2>
-                   }
-                    
+                <img className="pokemonbattle_header" src={header} alt="title" />
+                <GetCharacters pokemons={this.state.pokemons} />
 
-                     <GetPokemons pokemons={this.state.pokemons} display={this.state.display} handleDisplay={this.handleDisplay}/>
-               
             </div>
         )
     }

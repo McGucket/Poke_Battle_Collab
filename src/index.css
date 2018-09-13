@@ -115,3 +115,29 @@ h2{
 .selectPokemonHeader{
   left:51%;
 }
+
+.selectPokemonHeader2{
+  left:40%;
+}
+
+.battleBTN{
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: black solid 10px;
+  border-radius: 50%;
+  margin-top: 102px;
+  margin-left: 190px;
+}
+
+.battleBTN:hover{
+  background-color: #e5e5e5;
+}
+
+.battleLink{
+  position: relative;
+  border-radius: 40%;
+  padding: 30px;
+  color: transparent;
+  top: 40px;
+}
