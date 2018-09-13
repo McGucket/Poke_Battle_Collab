@@ -4,16 +4,18 @@ var pokeApi = require('./api/pokeapi');
 var Loading = require('./Loading');
 
 function GetEntry(props) {
-    console.log(props.pokeData)
+    let entryData = Object.values(props.pokeData);
+    // console.log("EntryData : ", entryData[1]);
     return (
         <div className='pokedexBack'>
-            {props.pokeData.map(function (pokemon) {
-                return (
-                    <li key={pokemon.id}>
-                        {pokemon.pokemonName}
-                    </li>
-                )
-            })}
+            <p>
+                {entryData[0]}
+            </p><br />
+            <p>
+                {entryData[1]} , {entryData[2]}
+            </p>
+            <img src={entryData[4]} /><br />
+            <p>{entryData[3]}</p>
         </div>
     )
 }
@@ -29,7 +31,12 @@ class Entry extends React.Component {
     }
 
     componentDidMount() {
-        pokeApi.getPokedexData()
+        const { match: { params } } = this.props;
+        let entryId = params.id;
+
+        
+
+        pokeApi.getPokedexData(entryId)
             .then(function (pokemon) {
                 this.setState(function () {
                     return {
