@@ -11,15 +11,18 @@ module.exports = {
                 return response.data;
             });
     },
-    getPokedexData: function () {
-        var selectedPokemon = sessionStorage.getItem('pokeId')
-        var searchURL = window.encodeURI(jsonURL + "/" + selectedPokemon)
-
-        return axios.get(searchURL)
+    getPokedexData: function (entryId) {
+        
+        return axios.get(jsonURL)
             .then(response => {
-                var resp = response.data;
-                return console.log(resp);
-            })
+                let results = response.data;
+                let pokeArr = results.find(function(pokemon) {
+                    if(pokemon.id === parseInt(entryId))
+                    return pokemon;
+                })
+                console.log('Entry: ', pokeArr);
+                return pokeArr;
+            });
     }
 }
 

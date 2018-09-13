@@ -10,7 +10,7 @@ function GetPokemons(props) {
                 {props.pokemons.map(function (pokemon) {
                     return (
                         <li key={pokemon.id} onClick={() => saveDexNo(pokemon.id)}>
-                            <Link to='#'><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
+                            <Link to={'/Entry/' + pokemon.id}><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
                         </li>
                     )
                 })}
@@ -22,7 +22,6 @@ function GetPokemons(props) {
 
 function saveDexNo(pokedexNo) {
     sessionStorage.setItem('pokeId', pokedexNo);
-    pokeApi.getPokedexData();
     return console.log("Retrieving Pokemon Data...")
 }
 
