@@ -3,7 +3,6 @@ var React = require('react');
 var pokeApi = require('./api/pokeapi');
 var Link = require('react-router-dom').Link;
 var PropTypes = require('prop-types');
-var queryString = require('query-string');
 
 class GetCharacters extends React.Component {
     constructor(props) {
@@ -21,10 +20,9 @@ class GetCharacters extends React.Component {
         let id = event.target.id
         this.setState({
             battleArr: [this.state.battleArr, id],
-            // battleArr:[id]
             counter: this.state.counter + 1
 
-        }, () => console.log(this.state.battleArr[1]))
+        }, () => console.log(this.state.battleArr))
 
     }
 
