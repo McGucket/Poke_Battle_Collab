@@ -1,1 +1,106 @@
-{"Pokemon":[{"dexNo":"1","pokemonName":"Bulbasaur","pokemonType":["Grass","Poison"],"pokemonDesc":"Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker green patches. It has red eyes with white pupils and scleras. It also has pointed, ear-like structures on top of its head. Its snout is short and blunt, and it has a wide mouth.","imgSrcFront":"https://cdn.bulbagarden.net/upload/7/76/Spr_5b_001.png","imgSrcBack":"https://cdn.bulbagarden.net/upload/e/e9/Spr_b_5b_001.png"},{"dexNo":"2","pokemonName":"Charmander","pokemonType":["Fire"],"pokemonDesc":"Charmander is a bipedal, reptilian Pokémon with a primarily orange body. Its underside from the chest down and soles are cream-colored. It has two small fangs visible in its upper jaw and two smaller fangs in its lower jaw. Charmander has blue eyes. Its arms and legs are short with four fingers and three clawed toes.","imgSrcFront":"https://cdn.bulbagarden.net/upload/0/0a/Spr_5b_004.png","imgSrcBack":"https://cdn.bulbagarden.net/upload/5/54/Spr_b_5b_004.png"},{"dexNo":"3","pokemonName":"Squirtle","pokemonType":["Water"],"pokemonDesc":"Squirtle is a small Pokémon that resembles a light blue turtle. While it typically walks on its two short legs, it has been shown to run on all fours. It has large eyes and a slightly hooked upper lip. Each of its hands and feet has three pointed digits.","imgSrcFront":"https://cdn.bulbagarden.net/upload/5/59/Spr_5b_007.png","imgSrcBack":"https://cdn.bulbagarden.net/upload/3/3d/Spr_b_5b_007.png"},{"dexNo":"4","pokemonName":"Chikorita","pokemonType":["Grass"],"pokemonDesc":"Chikorita is a small, pale green Pokémon with a darker necklace of buds. It has a large head in proportion to the rest of its body with large red eyes that appear to have no pupils. It has four short legs with a single nailed toe on each and a small tail.","imgSrcFront":"https://cdn.bulbagarden.net/upload/9/9d/Spr_5b_152.png","imgSrcBack":"https://cdn.bulbagarden.net/upload/2/2b/Spr_b_5b_152.png"},{"dexNo":"5","pokemonName":"Cyndaquil","pokemonType":["Fire"],"pokemonDesc":"Cyndaquil is a small, bipedal Pokémon with bluish fur on top of its body, and a milky color on the underside. Cyndaquil seems to be a composite of features from the echidna and the shrew. The echidna features are the flames from its back, while its general body shape is shrew-like.","imgSrcFront":"https://cdn.bulbagarden.net/upload/0/05/Spr_5b_155.png","imgSrcBack":"https://cdn.bulbagarden.net/upload/b/b2/Spr_b_5b_155.png"},{"dexNo":"6","pokemonName":"Totodile","pokemonType":["Water"],"pokemonDesc":"Totodile resembles a bipedal, blue crocodile with red spines on its back and tail. The spine on its back is larger with additional ridges. Totodile's head is large, with ridges above its eyes. Much of the head's size is composed of Totodile's snout and strong jaws.","imgSrcFront":"https://cdn.bulbagarden.net/upload/3/33/Spr_5b_158.png","imgSrcBack":"https://cdn.bulbagarden.net/upload/4/42/Spr_b_5b_158.png"}]}
+{
+    "Pokemon": [
+      {
+        "id": 1,
+        "pokemonName": "Bulbasaur",
+        "pokemonType": [
+          "Grass"
+        ],
+        "pokemonDesc": "Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker green patches. It has red eyes with white pupils and scleras. It also has pointed, ear-like structures on top of its head. Its snout is short and blunt, and it has a wide mouth.",
+        "imgSrcFront": "https://cdn.bulbagarden.net/upload/7/76/Spr_5b_001.png",
+        "imgSrcBack": "https://cdn.bulbagarden.net/upload/e/e9/Spr_b_5b_001.png",
+        "pokemonCategory":"Seed Pokemon",
+        "pokemonSkills":[
+          "Tackle",
+          "Take Down",
+          "Razor Leaf",
+          "Skull Bash"
+        ]
+      },
+      {
+        "id": 2,
+        "pokemonName": "Charmander",
+        "pokemonType": [
+          "Fire"
+        ],
+        "pokemonDesc": "Charmander is a bipedal, reptilian Pokémon with a primarily orange body. Its underside from the chest down and soles are cream-colored. It has two small fangs visible in its upper jaw and two smaller fangs in its lower jaw. Charmander has blue eyes. Its arms and legs are short with four fingers and three clawed toes.",
+        "imgSrcFront": "https://cdn.bulbagarden.net/upload/0/0a/Spr_5b_004.png",
+        "imgSrcBack": "https://cdn.bulbagarden.net/upload/5/54/Spr_b_5b_004.png",
+        "pokemonCategory":"Lizard Pokemon",
+        "pokemonSkills":[
+          "Scratch",
+          "Flamethrower",
+          "Fire Fang",
+          "Slash"
+        ]
+      },
+      {
+        "id": 3,
+        "pokemonName": "Squirtle",
+        "pokemonType": [
+          "Water"
+        ],
+        "pokemonDesc": "Squirtle is a small Pokémon that resembles a light blue turtle. While it typically walks on its two short legs, it has been shown to run on all fours. It has large eyes and a slightly hooked upper lip. Each of its hands and feet has three pointed digits.",
+        "imgSrcFront": "https://cdn.bulbagarden.net/upload/5/59/Spr_5b_007.png",
+        "imgSrcBack": "https://cdn.bulbagarden.net/upload/3/3d/Spr_b_5b_007.png",
+        "pokemonCategory":"Tiny Turtle Pokemon",
+        "pokemonSkills":[
+          "Tackle",
+          "Water Pulse",
+          "Hydro Pump",
+          "Skull Bash"
+        ]
+      },
+      {
+        "id": 4,
+        "pokemonName": "Chikorita",
+        "pokemonType": [
+          "Grass"
+        ],
+        "pokemonDesc": "Chikorita is a small, pale green Pokémon with a darker necklace of buds. It has a large head in proportion to the rest of its body with large red eyes that appear to have no pupils. It has four short legs with a single nailed toe on each and a small tail.",
+        "imgSrcFront": "https://cdn.bulbagarden.net/upload/9/9d/Spr_5b_152.png",
+        "imgSrcBack": "https://cdn.bulbagarden.net/upload/2/2b/Spr_b_5b_152.png",
+        "pokemonCategory":"Leaf Pokemon",
+        "pokemonSkills":[
+          "Tackle",
+          "Magical Leaf",
+          "Body Slam",
+          "Solar Beam"
+        ]
+      },
+      {
+        "id": 5,
+        "pokemonName": "Cyndaquil",
+        "pokemonType": [
+          "Fire"
+        ],
+        "pokemonDesc": "Cyndaquil is a small, bipedal Pokémon with bluish fur on top of its body, and a milky color on the underside. Cyndaquil seems to be a composite of features from the echidna and the shrew. The echidna features are the flames from its back, while its general body shape is shrew-like.",
+        "imgSrcFront": "https://cdn.bulbagarden.net/upload/0/05/Spr_5b_155.png",
+        "imgSrcBack": "https://cdn.bulbagarden.net/upload/b/b2/Spr_b_5b_155.png",
+        "pokemonCategory":"Fire Mouse Pokemon",
+        "pokemonSkills":[
+          "Tackle",
+          "Flame Wheel",
+          "Eruption",
+          "Double-Edge"
+        ]
+      },
+      {
+        "id": 6,
+        "pokemonName": "Totodile",
+        "pokemonType": [
+          "Water"
+        ],
+        "pokemonDesc": "Totodile resembles a bipedal, blue crocodile with red spines on its back and tail. The spine on its back is larger with additional ridges. Totodile's head is large, with ridges above its eyes. Much of the head's size is composed of Totodile's snout and strong jaws.",
+        "imgSrcFront": "https://cdn.bulbagarden.net/upload/3/33/Spr_5b_158.png",
+        "imgSrcBack": "https://cdn.bulbagarden.net/upload/4/42/Spr_b_5b_158.png",
+        "pokemonCategory":"Big Jaw Pokemon",
+        "pokemonSkills":[
+          "Scratch",
+          "Hydro Pump",
+          "Crunch",
+          "Ice Fang"
+        ]
+      }
+    ]
+  }

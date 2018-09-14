@@ -20,7 +20,7 @@ class GetCharacters extends React.Component {
         let id = event.target.id
         this.setState((prevState) => {
             return{
-            battleArr: [this.state.battleArr, id],
+            battleArr: this.state.battleArr.concat([id]),
             counter: prevState.counter + 1
 
         }}, () => console.log(this.state.battleArr))
@@ -53,7 +53,7 @@ class GetCharacters extends React.Component {
                 <div className='battleBTN'>
                     <Link className='battleLink' to={{
                         pathname: '/Battle',
-                        search: '?HeroPokemon=' + this.state.battleArr[1] + '&EnemyPokemon=' + this.state.battleArr[0][1]
+                        search: '?HeroPokemon=' + this.state.battleArr[1] + '&EnemyPokemon=' + this.state.battleArr[0]
                     }}>Battle</Link>
                 </div>}
             </div>
