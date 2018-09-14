@@ -23,7 +23,7 @@ module.exports = {
     },
 
     fetchCombatants: function (heroId, enemyId) {
-        let fetchURL = "http://localhost:3000/Pokemon" + "?id=" + enemyId + "&id=" + heroId
+        let fetchURL = "http://localhost:3000/Pokemon" + "?id=" + heroId + "&id=" + enemyId
         console.log("fetchURL : ",fetchURL);
         return axios.get(fetchURL)
             .then(response => {
