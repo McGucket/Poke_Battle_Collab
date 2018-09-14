@@ -242,6 +242,50 @@ h2{
 }
 
 .battlegrounds {
-  background-image: url('./PicturesUsed/download.png') no-repeat;
-  background-size: 242px 140px;
+  background-image: url('./PicturesUsed/battle_background.png');
+  background-repeat: no-repeat;
+  background-size: 1280px 596px;
+  width: 1280px;
+  height: 596px;
+  margin-top: -17%;
+  margin-left: 20%;
+}
+table{
+  width: 1280px;
+  margin-left: 20%;
+  text-align: center;
+  padding: 10px;
+  background-color: orange;
+}
+
+td{
+  font-size: 21pt;
+  color: teal;
+  font-weight: bold;
+  padding: 25px;
+  background-color: white;
+}
+
+.td_left_top {
+  border-top-left-radius: 20px;
+}
+
+.td_right_top {
+  border-top-right-radius: 20px;
+}
+
+.td_left_bot {
+  border-bottom-left-radius: 20px;
+}
+
+.td_right_bot {
+  border-bottom-right-radius: 20px;
+}
+
+.run_option{
+  border-radius: 20px;
+}
+
+td:hover{
+  background-color: wheat;
 }

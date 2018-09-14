@@ -19,10 +19,11 @@ class GetCharacters extends React.Component {
     handleOnClick(event) {
         let id = event.target.id
         this.setState((prevState) => {
+            return{
             battleArr: [this.state.battleArr, id],
-            counter: this.state.counter + 1
+            counter: prevState.counter + 1
 
-        }, () => console.log(this.state.battleArr[1]))
+        }}, () => console.log(this.state.battleArr))
 
     }
 
