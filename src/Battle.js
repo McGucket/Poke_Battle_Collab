@@ -65,7 +65,7 @@ class Battle extends React.Component {
             this.setState(function () {
                 return {
                     heroPokemon: combatantResults[0],
-                    enemyPokemon: combatantResults[1]
+                    enemyPokemon: combatantResults[1],
                     loading: false
                 }
             });
