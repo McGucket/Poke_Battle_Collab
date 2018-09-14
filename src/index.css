@@ -240,3 +240,8 @@ h2{
 .select_pokemon {
   cursor: pointer;
 }
+
+.battlegrounds {
+  background-image: url('./PicturesUsed/download.png') no-repeat;
+  background-size: 242px 140px;
+}
