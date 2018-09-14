@@ -5,10 +5,10 @@ var pokeApi = require('../src/api/pokeapi')
 class HeroPokemon extends React.Component {
     render() {
         let hero = this.props.hero;
-        let skills = hero.pokemonSkills;
+        console.log('Hero : ', hero);
         return (
             <div className='hero_Box'>
-                <p>:D</p>
+                <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' />
                 <table className='moveset_tb'>
                     <tbody>
                         <tr>
@@ -29,10 +29,12 @@ class HeroPokemon extends React.Component {
 
 class EnemyPokemon extends React.Component {
     render() {
-        let enemy = this.props.enemy; //
+        let enemy = this.props.enemy; 
+        console.log('Enemy : ', enemy)
         return (
             <div className='enemy_Box'>
-                <p>Harlo</p>
+            <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' />
+
             </div>
         )
     }
@@ -46,7 +48,10 @@ class Battle extends React.Component {
         this.state = {
             heroPokemon: [],
             enemyPokemon: [],
+            heroHealth: 200,
+            enemyHealth: 200,
             loading: true
+
         }
     }
 
@@ -60,7 +65,7 @@ class Battle extends React.Component {
             this.setState(function () {
                 return {
                     heroPokemon: combatantResults[0],
-                    enemyPokemon: combatantResults[1],
+                    enemyPokemon: combatantResults[1]
                     loading: false
                 }
             });
