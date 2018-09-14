@@ -5,7 +5,7 @@ var pokeApi = require('../src/api/pokeapi')
 class HeroPokemon extends React.Component {
     render() {
         let hero = this.props.hero;
-        console.log('Hero : ', hero);
+        let skills = hero.pokemonSkills;
         return (
             <div className='hero_Box'>
                 <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' />
