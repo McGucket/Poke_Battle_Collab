@@ -6,8 +6,7 @@ var Loading = require('./Loading');
 var logo = require('./PicturesUsed/pokeballPicture.png');
 
 function GetEntry(props) {
-    let entryData = Object.values(props.pokeData);
-    console.log('Entry',entryData)
+    let entryData = props.pokeData;
     return (
         <div className='pokedexBack'>
             <div className='entry_layout'>
@@ -16,19 +15,19 @@ function GetEntry(props) {
 
                     <div className='entry_float'>
                         <div className='entry_left'>
-                            <img src={entryData[4]} title='Pokemon' alt='Pokemon' width='250' />
+                            <img src={entryData.imgSrcFront} title='Pokemon' alt='Pokemon' width='250' />
                         </div>
 
                         <div className='entry_right'>
                             <img className="pokeballpicture" src={logo} title='Pokeball' alt='Pokemonball' width='50' height='50' />
-                            <p className="pokedexNumber">#00{entryData[0]}</p>
-                            <p className="pokemonName">{entryData[1]}</p>
-                            <p className="pokemonCategory">{entryData[6]}</p>
-                            <p className="pokemonType">{entryData[2]}</p>
+                            <p className="pokedexNumber">#00{entryData.id}</p>
+                            <p className="pokemonName">{entryData.pokemonName}</p>
+                            <p className="pokemonCategory">{entryData.pokemonCategory}</p>
+                            <p className="pokemonType">{entryData.pokemonType}</p>
 
                         </div>
                     </div>
-                    <div className='entry_desc'>{entryData[3]}</div>
+                    <div className='entry_desc'>{entryData.pokemonDesc}</div>
                 </div>
             </div>
         </div>
