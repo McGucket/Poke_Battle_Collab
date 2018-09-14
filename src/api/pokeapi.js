@@ -27,9 +27,6 @@ module.exports = {
         return axios.get(fetchURL)
             .then(response => {
                 let results = response.data;
-                // let stringifyresults = JSON.stringify(results);
-                // let splitresults = stringifyresults.split("},");
-                // console.log("Results :",splitresults);
                 return results;
             })
     }

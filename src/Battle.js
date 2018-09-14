@@ -5,9 +5,10 @@ var pokeApi = require('../src/api/pokeapi')
 class HeroPokemon extends React.Component {
     render() {
         let hero = this.props.hero;
+        console.log('Hero : ', hero);
         return (
             <div className='hero_Box'>
-                <p>{hero}</p>
+                <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' />
                 <table className='moveset_tb'>
                     <tbody>
                         <tr>
@@ -28,10 +29,11 @@ class HeroPokemon extends React.Component {
 
 class EnemyPokemon extends React.Component {
     render() {
-        let enemy = this.props.enemy; //
+        let enemy = this.props.enemy; 
+        console.log('Enemy : ', enemy)
         return (
             <div className='enemy_Box'>
-                <p>{enemy}</p>
+            <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' />
             </div>
         )
     }
@@ -42,10 +44,11 @@ class Battle extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state={
-            heroPokemon :[],
-            enemyPokemon:[]
-
+        this.state = {
+            heroPokemon: [],
+            enemyPokemon: [],
+            heroHealth: 200,
+            enemyHealth: 200
         }
     }
 
@@ -56,13 +59,13 @@ class Battle extends React.Component {
             chosenPokemon.HeroPokemon,
             chosenPokemon.EnemyPokemon
         ).then(function (combatantResults) {
-                this.setState(function () {
-                    return {
-                        heroPokemon:combatantResults[0],
-                        enemyPokemon:combatantResults[1]
-                    }
-                });
-            }.bind(this));
+            this.setState(function () {
+                return {
+                    heroPokemon: combatantResults[0],
+                    enemyPokemon: combatantResults[1]
+                }
+            });
+        }.bind(this));
     }
 
 
@@ -70,8 +73,8 @@ class Battle extends React.Component {
         return (
             <div className='battleBox'>
                 <div className='battlegrounds'>
-                    <EnemyPokemon enemy={this.state.enemyPokemon} />
-                    <HeroPokemon hero={heroName} />
+                    <EnemyPokemon enemy={this.state.enemyPokemon} e_Health={this.state.enemyHealth} />
+                    <HeroPokemon hero={this.state.heroPokemon} h_Health={this.state.heroHealth} />
                 </div>
             </div>
         )
