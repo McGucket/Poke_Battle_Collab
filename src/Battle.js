@@ -37,13 +37,15 @@ class EnemyPokemon extends React.Component {
     }
 }
 
+
 class Battle extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            heroPokemon: 0,
-            enemyPokemon: 0
+        this.state={
+            heroPokemon :[],
+            enemyPokemon:[]
+
         }
     }
 
@@ -53,12 +55,18 @@ class Battle extends React.Component {
         pokeApi.fetchCombatants(
             chosenPokemon.HeroPokemon,
             chosenPokemon.EnemyPokemon
-        )
+        ).then(function (combatantResults) {
+                this.setState(function () {
+                    return {
+                        heroPokemon:combatantResults[0],
+                        enemyPokemon:combatantResults[1]
+                    }
+                });
+            }.bind(this));
     }
 
 
     render() {
-        var heroName = this.state.samName
         return (
             <div className='battleBox'>
                 <div className='battlegrounds'>
