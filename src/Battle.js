@@ -15,7 +15,6 @@ class Battle extends React.Component {
 
     componentDidMount() {
         var chosenPokemon = queryString.parse(this.props.location.search);
-        console.log("Battle.js ChosenPokemon : ",chosenPokemon);
         pokeApi.fetchCombatants(
             chosenPokemon.HeroPokemon,
             chosenPokemon.EnemyPokemon

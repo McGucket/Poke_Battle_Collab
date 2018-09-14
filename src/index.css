@@ -264,6 +264,7 @@ td{
   font-weight: bold;
   padding: 25px;
   background-color: white;
+  border: grey solid 2px;
 }
 
 .td_left_top {
