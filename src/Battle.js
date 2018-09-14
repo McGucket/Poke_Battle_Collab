@@ -1,9 +1,30 @@
 var React = require('react');
-
-
+var queryString = require('query-string');
+var pokeApi = require('../src/api/pokeapi')
 
 class Battle extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state={
+            heroPokemon : 0,
+            enemyPokemon:0
+        }
+    }
+
+
+    componentDidMount() {
+        var chosenPokemon = queryString.parse(this.props.location.search);
+
+        pokeApi.fetchCombatants([
+            chosenPokemon.heroPokemon,
+            chosenPokemon.enemyPokemon
+        ])
+    }
+
+
     render() {
+
         return (
             <div className='battleBox'>
                 <div className='battlegrounds'>
