@@ -15,11 +15,11 @@ class Battle extends React.Component {
 
     componentDidMount() {
         var chosenPokemon = queryString.parse(this.props.location.search);
-
-        pokeApi.fetchCombatants([
-            chosenPokemon.heroPokemon,
-            chosenPokemon.enemyPokemon
-        ])
+        console.log("Battle.js ChosenPokemon : ",chosenPokemon);
+        pokeApi.fetchCombatants(
+            chosenPokemon.HeroPokemon,
+            chosenPokemon.EnemyPokemon
+        )
     }
 
 
@@ -31,6 +31,7 @@ class Battle extends React.Component {
 
                 </div>
                 <table>
+                    <tbody>
                     <tr>
                         <td className='td_left_top'>Move 1</td>
                         <td className='td_right_top'>Move 2</td>
@@ -40,6 +41,7 @@ class Battle extends React.Component {
                         <td className='td_left_bot'>Move 3</td>
                         <td className='td_right_bot'>Move 4</td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         )
