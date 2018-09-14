@@ -249,10 +249,10 @@ h2{
   height: 596px;
   margin-top: -17%;
   margin-left: 20%;
+  border: red solid 5px;
 }
-table{
+.moveset_tb{
   width: 1280px;
-  margin-left: 20%;
   text-align: center;
   padding: 10px;
   background-color: orange;
@@ -264,6 +264,7 @@ td{
   font-weight: bold;
   padding: 25px;
   background-color: white;
+  border: grey solid 2px;
 }
 
 .td_left_top {
@@ -288,4 +289,19 @@ td{
 
 td:hover{
   background-color: wheat;
+}
+
+.hero_Box{
+height: 400px;
+border: blue solid 5px;
+}
+
+.moveset_tb{
+  position: relative;
+  top:235px;
+}
+
+.enemy_Box{
+  height: 300px;
+border: yellow solid 5px;
 }
