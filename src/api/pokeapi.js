@@ -6,7 +6,6 @@ module.exports = {
 
         return axios.get(jsonURL)
             .then(response => {
-                console.log(response.data);
                 return response.data;
             });
     },

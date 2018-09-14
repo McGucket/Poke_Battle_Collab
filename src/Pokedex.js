@@ -10,7 +10,7 @@ function GetPokemons(props) {
             <ul className="dexList">
                 {props.pokemons.map(function (pokemon) {
                     return (
-                        <li key={pokemon.id} onClick={() => saveDexNo(pokemon.id)}>
+                        <li key={pokemon.id}>
                             <Link to={'/Entry/' + pokemon.id}><img src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' /></Link>
                         </li>
                     )
@@ -22,12 +22,6 @@ function GetPokemons(props) {
 
 GetPokemons.propTypes = {
     pokemons: PropTypes.array.isRequired
-}
-
-
-function saveDexNo(pokedexNo) {
-    sessionStorage.setItem('pokeId', pokedexNo);
-    return console.log("Retrieving Pokemon Data...")
 }
 
 class Pokedex extends React.Component {
