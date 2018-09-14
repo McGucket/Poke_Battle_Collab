@@ -10,17 +10,27 @@ module.exports = {
             });
     },
     getPokedexData: function (entryId) {
-        
+
         return axios.get(jsonURL)
             .then(response => {
                 let results = response.data;
-                let pokeArr = results.find(function(pokemon) {
-                    if(pokemon.id === parseInt(entryId))
-                    return pokemon;
+                let pokeArr = results.find(function (pokemon) {
+                    if (pokemon.id === parseInt(entryId))
+                        return pokemon;
                 })
                 return pokeArr;
             });
+    },
+
+    fetchCombatants: function (heroId, enemyId) {
+        let fetchURL = "http://localhost:3000/Pokemon" + "?id=" + heroId + "&id=" + enemyId
+
+        return axios.get(fetchURL)
+            .then(response => {
+                let results = response.data;
+                return results;
+            })
     }
-    
+
 }
 
