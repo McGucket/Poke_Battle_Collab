@@ -24,11 +24,12 @@ module.exports = {
 
     fetchCombatants: function (heroId, enemyId) {
         let fetchURL = "http://localhost:3000/Pokemon" + "?id=" + heroId + "&id=" + enemyId
-        console.log("fetchURL : ",fetchURL);
         return axios.get(fetchURL)
             .then(response => {
                 let results = response.data;
-                console.log("Results :",results);
+                // let stringifyresults = JSON.stringify(results);
+                // let splitresults = stringifyresults.split("},");
+                // console.log("Results :",splitresults);
                 return results;
             })
     }
