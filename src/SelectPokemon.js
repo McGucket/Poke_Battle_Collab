@@ -53,7 +53,7 @@ class GetCharacters extends React.Component {
                 <div className='battleBTN'>
                     <Link className='battleLink' to={{
                         pathname: '/Battle',
-                        search: '?HeroPokemon=' + this.state.battleArr[1] + '&EnemyPokemon=' + this.state.battleArr[0]
+                        search: '?HeroPokemon=' + this.state.battleArr[0] + '&EnemyPokemon=' + this.state.battleArr[1]
                     }}>Battle</Link>
                 </div>}
             </div>
