@@ -15,7 +15,11 @@ class Home extends React.Component {
             <img className="pokemonlogo" src={logo} alt="Logo" width="800px" height="300px"/>
 
              <Link className='button' to='/Instructions'>
+<<<<<<< HEAD
             <img src={this.state.img} alt="pokeballnavigation" onMouseEnter={() => {
+=======
+            <img src={this.state.img} alt='Button to go to Instructions page' onMouseEnter={() => {
+>>>>>>> 36e52c6693626d8ca97e3b58c2ead5d25ca62aac
                                                      this.setState({ img:require('./PicturesUsed/HalfOpenPokeballPikachu.png')
                                                                     })
                                                           }} onMouseLeave={() => {

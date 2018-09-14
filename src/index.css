@@ -190,7 +190,6 @@ h2{
 }
 
 .entry_float{
-  border:1px solid black;
   height:230px;
 }
 
@@ -238,3 +237,6 @@ h2{
 }
 
 
+.select_pokemon {
+  cursor: pointer;
+}

@@ -6,7 +6,6 @@ module.exports = {
 
         return axios.get(jsonURL)
             .then(response => {
-                console.log(response.data);
                 return response.data;
             });
     },
@@ -19,7 +18,6 @@ module.exports = {
                     if(pokemon.id === parseInt(entryId))
                     return pokemon;
                 })
-                console.log('Entry: ', pokeArr);
                 return pokeArr;
             });
     }

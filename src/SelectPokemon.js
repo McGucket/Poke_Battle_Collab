@@ -18,7 +18,7 @@ class GetCharacters extends React.Component {
 
     handleOnClick(event) {
         let id = event.target.id
-        this.setState({
+        this.setState(prevState => {
             battleArr: [this.state.battleArr, id],
             counter: this.state.counter + 1
 
@@ -39,7 +39,7 @@ class GetCharacters extends React.Component {
                         {this.props.pokemons.map((pokemon) => {
                             return (
                                 <li key={pokemon.id}>
-                                    <img id={pokemon.id} onClick={this.handleOnClick.bind(this)} src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
+                                    <img className='select_pokemon' id={pokemon.id} onClick={this.handleOnClick.bind(this)} src={pokemon.imgSrcFront} alt={pokemon.pokemonName} width='200' />
                                 </li>
 
                             )
