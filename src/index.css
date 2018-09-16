@@ -310,6 +310,11 @@ height: 400px;
   position: absolute;
   top: 23%;
   left: 25%;
+  border: #0280bb solid 1px;
+}
+
+.hero_Stats{
+  background-color: 
 }
 
 .enemy_sprite {
