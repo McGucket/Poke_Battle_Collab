@@ -6,9 +6,14 @@ class HeroPokemon extends React.Component {
     render() {
         let hero = this.props.hero;
         let skills = hero.pokemonSkills;
+        let h_Health = this.props.heroHealth;
+        console.log(h_Health);
         return (
             <div className='hero_Box'>
                 <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' />
+                <div className='hero_Stats'>
+                
+                </div>
                 <table className='moveset_tb'>
                     <tbody>
                         <tr>
@@ -29,11 +34,11 @@ class HeroPokemon extends React.Component {
 
 class EnemyPokemon extends React.Component {
     render() {
-        let enemy = this.props.enemy; 
+        let enemy = this.props.enemy;
         console.log('Enemy : ', enemy)
         return (
             <div className='enemy_Box'>
-            <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' />
+                <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' />
 
             </div>
         )
@@ -51,7 +56,6 @@ class Battle extends React.Component {
             heroHealth: 200,
             enemyHealth: 200,
             loading: true
-
         }
     }
 
@@ -75,7 +79,6 @@ class Battle extends React.Component {
 
     render() {
         var loading = this.state.loading;
-        console.log(loading);
         if (loading === true) {
             return (
                 <p>Starting up your game..</p>
@@ -85,8 +88,8 @@ class Battle extends React.Component {
             return (
                 <div className='battleBox'>
                     <div className='battlegrounds'>
-                        <EnemyPokemon enemy={this.state.enemyPokemon} />
-                        <HeroPokemon hero={this.state.heroPokemon} />
+                        <EnemyPokemon enemy={this.state.enemyPokemon} enemyHealth={this.state.enemyHealth} />
+                        <HeroPokemon hero={this.state.heroPokemon} heroHealth={this.state.heroHealth} />
                     </div>
                 </div>
             )
