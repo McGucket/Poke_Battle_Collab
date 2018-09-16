@@ -35,10 +35,12 @@ class HeroPokemon extends React.Component {
 
         function animateFwd() {
             $('.hero_sprite').css('transform','translateX(40px)');
+            $('.enemy_sprite').css('transform','translateX(40px)');
         }
 
         function animateBack() {
             $('.hero_sprite').css('transform','translateX(-40px)');
+            $('.enemy_sprite').css('transform','translateX(-40px)');
         }
 
         function heroAttack() {
