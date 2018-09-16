@@ -5,11 +5,29 @@ var Link = require('react-router-dom').Link;
 var { wobble } = require('react-animations');
 var Radium = require('radium');
 var { StyleRoot } = require('radium');
+var {Redirect} = require('react-router');
 
 let styles = {
     wobble: {
         animation: 'x 1s',
         animationName: Radium.keyframes(wobble, 'wobble')
+    }
+}
+
+
+class RedirectingClassHomePage extends React.Component{
+    render(){
+        return(
+            <Redirect to='/' />
+        )
+    }
+}
+
+class RedirectingClassSelectPokemon extends React.Component{
+    render(){
+        return(
+            <Redirect to='/SelectPokemon' />
+        )
     }
 }
 
@@ -48,7 +66,7 @@ class HeroPokemon extends React.Component {
 
                             <td className='td_right_top' onClick={() => this.props.calculateDmg()}>{skills[1]}</td>
                             
-                            <td className='run_option' rowSpan='2'><Link to='/SelectPokemon'>Run Away</Link></td>
+                            <td className='run_option' rowSpan='2'><Link className='runawaybutton' to='/SelectPokemon'>Run Away</Link></td>
                             
                         </tr>
                         <tr>
@@ -112,7 +130,7 @@ class Battle extends React.Component {
 
     calculateDmg() {
         let dmgValue = Math.floor(Math.random() * (60 - 1) + 1);
-        setTimeout(this.dealDmgToHero, 1000);
+        setTimeout(this.dealDmgToHero, 300);
         this.setState({
             enemyHealth: this.state.enemyHealth - dmgValue
         });
@@ -148,7 +166,39 @@ class Battle extends React.Component {
                 <p>Starting up your game..</p>
             )
         }
-        else {
+
+        else if(this.state.heroHealth <= 0){
+          var popuptext = window.confirm("Your pokemon has fainted! Try again?")
+            if(popuptext == true){
+                return(
+                <RedirectingClassSelectPokemon />
+                )
+            }
+
+            else if(popuptext ==false){
+                return(
+                <RedirectingClassHomePage />
+                )
+            }
+
+            }
+
+        else if(this.state.enemyHealth <= 0){
+            var popuptext = window.confirm("Your pokemon has won! Want to try again?")
+            if(popuptext == true){
+                return(
+                <RedirectingClassSelectPokemon />
+                )
+            }
+
+            else if(popuptext ==false){
+                return(
+                <RedirectingClassHomePage />
+                )
+            }
+            
+        }
+        else if(this.state.heroHealth && this.state.enemyHealth > 0){
             return (
                 <div className='battleBox'>
                     <div className='battlegrounds'>
