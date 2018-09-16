@@ -1,9 +1,11 @@
 var React = require('react');
 var queryString = require('query-string');
-var pokeApi = require('../src/api/pokeapi')
+var pokeApi = require('../src/api/pokeapi');
+
 
 class HeroPokemon extends React.Component {
     render() {
+
 
         let hero = this.props.hero;
         let skills = hero.pokemonSkills;
@@ -19,19 +21,23 @@ class HeroPokemon extends React.Component {
             }
         };
 
-        console.log(h_Health);
+        $('.td_left_top').click(function(){
+            $('.hero_sprite').animate({border:"5px solid blue"});
+        });
+
+
         return (
             <div className='hero_Box'>
                 <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' />
                 <div className='hero_Stats'>
                     <span className='sprite_Name'>{hero.pokemonName}</span><br />
                     <div className='pokemon_Health' style={style.hero}></div>
-                    <p style={{ textAlign: "right" }}>{h_Health * 1.5}&ensp;/&ensp;300</p>
+                    <p style={{ textAlign: "right" }}>{h_Health}&ensp;/&ensp;200</p>
                 </div>
                 <table className='moveset_tb'>
                     <tbody>
                         <tr>
-                            <td className='td_left_top'>{skills[0]}</td>
+                            <td className='td_left_top' onClick={() => this.props.calculateDmg()}>{skills[0]}</td>
                             <td className='td_right_top'>{skills[1]}</td>
                             <td className='run_option' rowSpan='2'>Run Away</td>
                         </tr>
@@ -51,6 +57,7 @@ class EnemyPokemon extends React.Component {
         let enemy = this.props.enemy;
         let e_Health = this.props.enemyHealth;
 
+
         var style = {
             enemy: {
                 backgroundColor: '#12e23b',
@@ -61,13 +68,12 @@ class EnemyPokemon extends React.Component {
             }
         };
 
-        console.log('Enemy : ', enemy)
         return (
             <div className='enemy_Box'>
                 <div className='enemy_Stats'>
                     <span className='sprite_Name'>{enemy.pokemonName}</span><br />
                     <div className='enemy_Health' style={style.enemy}></div>
-                    <p style={{ textAlign: "right" }}>{e_Health * 1.5}&ensp;/&ensp;300</p>
+                    <p style={{ textAlign: "right" }}>{e_Health}&ensp;/&ensp;200</p>
                 </div>
                 <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' />
             </div>
@@ -87,6 +93,14 @@ class Battle extends React.Component {
             enemyHealth: 200,
             loading: true
         }
+        this.updateHealth = this.updateHealth.bind(this);
+    }
+
+    updateHealth() {
+        let dmgValue = Math.floor(Math.random() * (60 - 1) + 1);
+        this.setState({
+            enemyHealth: this.state.enemyHealth - dmgValue
+        })
     }
 
 
@@ -119,7 +133,7 @@ class Battle extends React.Component {
                 <div className='battleBox'>
                     <div className='battlegrounds'>
                         <EnemyPokemon enemy={this.state.enemyPokemon} enemyHealth={this.state.enemyHealth} />
-                        <HeroPokemon hero={this.state.heroPokemon} heroHealth={this.state.heroHealth} />
+                        <HeroPokemon hero={this.state.heroPokemon} heroHealth={this.state.heroHealth} calculateDmg={this.updateHealth} />
                     </div>
                 </div>
             )
