@@ -5,6 +5,7 @@ var Link = require('react-router-dom').Link;
 var { wobble } = require('react-animations');
 var Radium = require('radium');
 var { StyleRoot } = require('radium');
+var $ = require('jquery');
 
 let styles = {
     wobble: {
@@ -32,28 +33,45 @@ class HeroPokemon extends React.Component {
             }
         };
 
+        function animateFwd() {
+            $('.hero_sprite').css('transform','translateX(40px)');
+            $('.enemy_sprite').css('transform','translateX(40px)');
+        }
+
+        function animateBack() {
+            $('.hero_sprite').css('transform','translateX(-40px)');
+            $('.enemy_sprite').css('transform','translateX(-40px)');
+        }
+
+        function heroAttack() {
+            animateFwd();
+            setTimeout(animateBack, 100);
+        }
+
 
         return (
             <div className='hero_Box'>
+            <StyleRoot>
                 <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' style={styles.wobble} />
+                </StyleRoot>
                 <div className='hero_Stats'>
                     <span className='sprite_Name'>{hero.pokemonName}</span><br />
                     <div className='pokemon_Health' style={style.hero}></div>
-                    <p style={{ textAlign: "right" }}>{h_Health}&ensp;/&ensp;200</p>
+                    <p style={{ textAlign: "right" }}>HP : {h_Health}&ensp;/&ensp;200</p>
                 </div>
                 <table className='moveset_tb'>
                     <tbody>
                         <tr>
-                            <td className='td_left_top' onClick={() => this.props.calculateDmg()}>{skills[0]}</td>
+                            <td className='td_left_top' onClick={() => this.props.calculateDmg(heroAttack())}>{skills[0]}</td>
 
-                            <td className='td_right_top' onClick={() => this.props.calculateDmg()}>{skills[1]}</td>
+                            <td className='td_right_top' onClick={() => this.props.calculateDmg(heroAttack())}>{skills[1]}</td>
                             
-                            <td className='run_option' rowSpan='2'><Link to='/SelectPokemon'>Run Away</Link></td>
+                            <td className='run_option' rowSpan='2'><Link className='runBTN' to='/SelectPokemon'>Run Away</Link></td>
                             
                         </tr>
                         <tr>
-                            <td className='td_left_bot' onClick={() => this.props.calculateDmg()}>{skills[2]}</td>
-                            <td className='td_right_bot' onClick={() => this.props.calculateDmg()}>{skills[3]}</td>
+                            <td className='td_left_bot' onClick={() => this.props.calculateDmg(heroAttack())}>{skills[2]}</td>
+                            <td className='td_right_bot' onClick={() => this.props.calculateDmg(heroAttack())}>{skills[3]}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -84,7 +102,7 @@ class EnemyPokemon extends React.Component {
                 <div className='enemy_Stats'>
                     <span className='sprite_Name'>{enemy.pokemonName}</span><br />
                     <div className='enemy_Health' style={style.enemy}></div>
-                    <p style={{ textAlign: "right" }}>{e_Health}&ensp;/&ensp;200</p>
+                    <p style={{ textAlign: "right" }}>HP : {e_Health}&ensp;/&ensp;200</p>
                 </div>
                 <StyleRoot>
                     <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' style={styles.wobble} />
@@ -152,6 +170,7 @@ class Battle extends React.Component {
             return (
                 <div className='battleBox'>
                     <div className='battlegrounds'>
+
                         <EnemyPokemon enemy={this.state.enemyPokemon} enemyHealth={this.state.enemyHealth} />
                         <HeroPokemon hero={this.state.heroPokemon} heroHealth={this.state.heroHealth} calculateDmg={this.calculateDmg} />
                     </div>
