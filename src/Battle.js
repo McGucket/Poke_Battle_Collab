@@ -1,7 +1,7 @@
 var React = require('react');
 var queryString = require('query-string');
 var pokeApi = require('../src/api/pokeapi');
-
+var Link = require('react-router-dom').Link;
 
 class HeroPokemon extends React.Component {
     render() {
@@ -18,12 +18,9 @@ class HeroPokemon extends React.Component {
                 width: (h_Health * 1.5) + 'px',
                 height: '20px',
                 border: 'white 2px solid'
+                
             }
         };
-
-        $('.td_left_top').click(function(){
-            $('.hero_sprite').animate({border:"5px solid blue"});
-        });
 
 
         return (
@@ -39,7 +36,9 @@ class HeroPokemon extends React.Component {
                         <tr>
                             <td className='td_left_top' onClick={() => this.props.calculateDmg()}>{skills[0]}</td>
                             <td className='td_right_top'>{skills[1]}</td>
-                            <td className='run_option' rowSpan='2'>Run Away</td>
+                            
+                            <td className='run_option' rowSpan='2'><Link to='/SelectPokemon'>Run Away</Link></td>
+                            
                         </tr>
                         <tr>
                             <td className='td_left_bot'>{skills[2]}</td>
