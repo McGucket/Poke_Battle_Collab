@@ -1,10 +1,10 @@
 var React = require('react');
 var queryString = require('query-string');
 var pokeApi = require('../src/api/pokeapi');
+var Link = require('react-router-dom').Link;
 var { wobble } = require('react-animations');
 var Radium = require('radium');
 var { StyleRoot } = require('radium');
-
 
 let styles = {
     wobble: {
@@ -28,6 +28,7 @@ class HeroPokemon extends React.Component {
                 width: (h_Health * 1.5) + 'px',
                 height: '20px',
                 border: 'white 2px solid'
+                
             }
         };
 
@@ -44,8 +45,11 @@ class HeroPokemon extends React.Component {
                     <tbody>
                         <tr>
                             <td className='td_left_top' onClick={() => this.props.calculateDmg()}>{skills[0]}</td>
+
                             <td className='td_right_top' onClick={() => this.props.calculateDmg()}>{skills[1]}</td>
-                            <td className='run_option' rowSpan='2'>Run Away</td>
+                            
+                            <td className='run_option' rowSpan='2'><Link to='/SelectPokemon'>Run Away</Link></td>
+                            
                         </tr>
                         <tr>
                             <td className='td_left_bot' onClick={() => this.props.calculateDmg()}>{skills[2]}</td>
