@@ -298,27 +298,50 @@ height: 400px;
 
 .moveset_tb{
   position: relative;
-  top:295px;
+  top:25px;
 }
 
 .enemy_Box{
   height: 300px;
+  padding: 20px;
 /* border: yellow solid 5px; */
+}
+
+.sprite_Name {
+  font-weight: 550;
+  text-transform: uppercase;
+  text-shadow: 2px 2px lightgrey;
 }
 
 .hero_sprite {
   position: absolute;
-  top: 23%;
-  left: 25%;
-  border: #0280bb solid 1px;
+  top: 28%;
+  left: 26%;
 }
 
 .hero_Stats{
-  background-color: 
+  background-color: beige;
+  width: 360px;
+  height: 80px;
+  border-radius: 15px;
+  border: #506860 5px solid;
+  margin-top: 100px;
+  margin-left: 750px;
+  padding: 20px;
+}
+
+.enemy_Stats{
+  background-color: beige;
+  width: 360px;
+  height: 80px;
+  border-radius: 15px;
+  border: #506860 5px solid;
+  margin-left: 80px;
+  padding: 20px;
 }
 
 .enemy_sprite {
   position: absolute;
-  top:-5%;
-  right: 9%;
+  top:0%;
+  right: 7%;
 }

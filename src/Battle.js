@@ -4,15 +4,29 @@ var pokeApi = require('../src/api/pokeapi')
 
 class HeroPokemon extends React.Component {
     render() {
+
         let hero = this.props.hero;
         let skills = hero.pokemonSkills;
         let h_Health = this.props.heroHealth;
+
+        var style = {
+            hero: {
+                backgroundColor: '#12e23b',
+                borderRadius: '10px',
+                width: (h_Health * 1.5) + 'px',
+                height: '20px',
+                border: 'white 2px solid'
+            }
+        };
+
         console.log(h_Health);
         return (
             <div className='hero_Box'>
                 <img className='hero_sprite' src={hero.imgSrcBack} title='HeroPokemon' alt='Your Pokemon Here' width='500' />
                 <div className='hero_Stats'>
-                
+                    <span className='sprite_Name'>{hero.pokemonName}</span><br />
+                    <div className='pokemon_Health' style={style.hero}></div>
+                    <p style={{ textAlign: "right" }}>{h_Health * 1.5}&ensp;/&ensp;300</p>
                 </div>
                 <table className='moveset_tb'>
                     <tbody>
@@ -35,11 +49,27 @@ class HeroPokemon extends React.Component {
 class EnemyPokemon extends React.Component {
     render() {
         let enemy = this.props.enemy;
+        let e_Health = this.props.enemyHealth;
+
+        var style = {
+            enemy: {
+                backgroundColor: '#12e23b',
+                borderRadius: '10px',
+                width: (e_Health * 1.5) + 'px',
+                height: '20px',
+                border: 'white 2px solid'
+            }
+        };
+
         console.log('Enemy : ', enemy)
         return (
             <div className='enemy_Box'>
+                <div className='enemy_Stats'>
+                    <span className='sprite_Name'>{enemy.pokemonName}</span><br />
+                    <div className='enemy_Health' style={style.enemy}></div>
+                    <p style={{ textAlign: "right" }}>{e_Health * 1.5}&ensp;/&ensp;300</p>
+                </div>
                 <img className='enemy_sprite' src={enemy.imgSrcFront} title='EnemyPokemon' alt='Enemy Pokemon Here' width='500' />
-
             </div>
         )
     }
