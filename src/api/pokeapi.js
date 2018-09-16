@@ -23,7 +23,14 @@ module.exports = {
     },
 
     fetchCombatants: function (heroId, enemyId) {
-        let fetchURL = "http://localhost:3000/Pokemon" + "?id=" + heroId + "&id=" + enemyId
+        let fetchURL;
+        if (parseInt(heroId) > parseInt(enemyId)) {
+            fetchURL = "http://localhost:3000/Pokemon" + "?id=" + enemyId + "&id=" + heroId + "&_sort=id&_order=desc"
+        }
+        else if (parseInt(heroId) < parseInt(enemyId)) {
+            fetchURL = "http://localhost:3000/Pokemon" + "?id=" + enemyId + "&id=" + heroId + "&_sort=id&_order=asc"
+        }
+        console.log(fetchURL)
         return axios.get(fetchURL)
             .then(response => {
                 let results = response.data;
