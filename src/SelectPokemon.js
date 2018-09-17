@@ -9,8 +9,7 @@ class GetCharacters extends React.Component {
         super(props);
 
         this.state = {
-            battleArr: [],
-            counter: 0
+            battleArr: []
         }
 
         this.handleOnClick = this.handleOnClick.bind(this);
@@ -18,10 +17,12 @@ class GetCharacters extends React.Component {
 
     handleOnClick(event) {
         let id = event.target.id
-        this.setState((prevState) => {
+        let battleArray = this.state.battleArr.concat([id])
+        battleArray.splice(2,1)
+        this.setState(() => {
             return{
-            battleArr: this.state.battleArr.concat([id]),
-            counter: prevState.counter + 1
+            battleArr: battleArray
+            
 
         }}, () => console.log(this.state.battleArr))
 
@@ -30,7 +31,7 @@ class GetCharacters extends React.Component {
     render() {
         return (
             <div>
-                {this.state.counter === 0 ?
+                {this.state.battleArr.length === 0 ?
                     <h2 className='selectPokemonHeader'>Choose Your Pokemon!</h2>
                     :
                     <h2 className='selectPokemonHeader2'>Choose Enemy Pokemon! (Press the Pokeball when done!)</h2>
@@ -49,7 +50,7 @@ class GetCharacters extends React.Component {
 
                     </ul>
                 </div>
-                {this.state.counter === 2 &&
+                {this.state.battleArr.length >= 2 &&
                 <div className='battleBTN'>
                     <Link className='battleLink' to={{
                         pathname: '/Battle',
