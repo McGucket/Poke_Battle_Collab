@@ -7,6 +7,9 @@ var Radium = require('radium');
 var { StyleRoot } = require('radium');
 var {Redirect} = require('react-router');
 var $ = require('jquery');
+var battleMusic = require('./battleMusic');
+
+
 
 let styles = {
     wobble: {
@@ -18,14 +21,17 @@ let styles = {
 
 class RedirectingClassHomePage extends React.Component{
     render(){
+        battleMusic.stopMusic()
         return(
             <Redirect to='/' />
+            
         )
     }
 }
 
 class RedirectingClassSelectPokemon extends React.Component{
     render(){
+        battleMusic.stopMusic()
         return(
             <Redirect to='/SelectPokemon' />
         )
@@ -34,6 +40,8 @@ class RedirectingClassSelectPokemon extends React.Component{
 
 class HeroPokemon extends React.Component {
     render() {
+
+        battleMusic.playMusic();
 
 
         let hero = this.props.hero;
@@ -84,7 +92,7 @@ class HeroPokemon extends React.Component {
 
                             <td className='td_right_top' onClick={() => this.props.calculateDmg(heroAttack())}>{skills[1]}</td>
                             
-                            <td className='run_option' rowSpan='2'><Link className='runBTN' to='/SelectPokemon'>Run Away</Link></td>
+                            <td className='run_option' rowSpan='2'><Link className='runBTN' to='/SelectPokemon' onClick={() => battleMusic.stopMusic()}>Run Away</Link></td>
                             
                         </tr>
                         <tr>
@@ -187,13 +195,13 @@ class Battle extends React.Component {
 
         else if(this.state.heroHealth <= 0){
           var popuptext = window.confirm("Your pokemon has fainted! Try again?")
-            if(popuptext == true){
+            if(popuptext === true){
                 return(
                 <RedirectingClassSelectPokemon />
                 )
             }
 
-            else if(popuptext ==false){
+            else if(popuptext === false){
                 return(
                 <RedirectingClassHomePage />
                 )
@@ -202,14 +210,14 @@ class Battle extends React.Component {
             }
 
         else if(this.state.enemyHealth <= 0){
-            var popuptext = window.confirm("Your pokemon has won! Want to try again?")
-            if(popuptext == true){
+            popuptext = window.confirm("Your pokemon has won! Want to try again?")
+            if(popuptext === true){
                 return(
                 <RedirectingClassSelectPokemon />
                 )
             }
 
-            else if(popuptext ==false){
+            else if(popuptext === false){
                 return(
                 <RedirectingClassHomePage />
                 )
