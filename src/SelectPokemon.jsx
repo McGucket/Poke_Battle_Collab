@@ -1,6 +1,6 @@
 const React = require('react');
 const { Link } = require('react-router-dom');
-// const PropTypes = require('prop-types');
+const PropTypes = require('prop-types');
 const pokeApi = require('./api/pokeapi');
 const header = require('./PicturesUsed/PokeBattleTitle.png');
 
@@ -68,11 +68,9 @@ Battle
   }
 }
 
-// GetCharacters.propTypes = {
-//   id: PropTypes.number,
-//   imgSrcFront: PropTypes.string,
-//   pokemonName: PropTypes.string,
-// };
+GetCharacters.propTypes = {
+  pokemons: PropTypes.shape,
+};
 
 
 class SelectPokemon extends React.Component {
