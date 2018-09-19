@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 const ReactRouter = require('react-router-dom');
-const Home = require('./Home');
-const Instructions = require('./Instructions');
+const Home = require('./Home.jsx');
+const Instructions = require('./Instructions.jsx');
 
 const Router = ReactRouter.BrowserRouter;
-const Route = ReactRouter.Route;
+const { Route } = ReactRouter;
 const Nav = require('./Nav');
 
-const Switch = ReactRouter.Switch;
+const { Switch } = ReactRouter;
 const Pokedex = require('./Pokedex');
 const SelectPokemon = require('./SelectPokemon');
 const Entry = require('./Entry');
@@ -16,6 +16,11 @@ const Battle = require('./Battle');
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
   render() {
     return (
 
@@ -29,10 +34,8 @@ class App extends Component {
             <Route path="/SelectPokemon" component={SelectPokemon} />
             <Route exact path="/Entry/:id" component={Entry} />
             <Route path="/Battle" component={Battle} />
-            <Route render={function () {
-              return <p>Not Found</p>;
-            }}
-            />
+
+
           </Switch>
         </div>
       </Router>

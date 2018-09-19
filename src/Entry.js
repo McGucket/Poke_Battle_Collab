@@ -2,7 +2,6 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const header = require('./PicturesUsed/Pokedex.png');
 const pokeApi = require('./api/pokeapi');
-const Loading = require('./Loading');
 const logo = require('./PicturesUsed/pokeballPicture.png');
 
 function GetEntry(props) {
@@ -68,7 +67,7 @@ class Entry extends React.Component {
       <div>
         <img className="pokedex_header" src={header} alt="title" />
         {!this.state.pokemon
-          ? <Loading text="Retreiving Pokedex Data" />
+          ? <p>Loading</p>
           : <GetEntry pokeData={this.state.pokemon} />
                 }
       </div>
