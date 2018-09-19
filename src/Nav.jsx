@@ -1,5 +1,5 @@
 const React = require('react');
-const NavLink = require('react-router-dom').NavLink;
+const { NavLink } = require('react-router-dom');
 const battleMusic = require('./battleMusic');
 
 function Nav() {
