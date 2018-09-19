@@ -1,11 +1,14 @@
+/* eslint max-len: ["error", { "code": 300 }] */
+
 const React = require('react');
 const queryString = require('query-string');
-const Link = require('react-router-dom').Link;
+const { Link } = require('react-router-dom');
 const { wobble } = require('react-animations');
 const Radium = require('radium');
 const { StyleRoot } = require('radium');
 const { Redirect } = require('react-router');
 const $ = require('jquery');
+const PropTypes = require('prop-types');
 const pokeApi = require('../src/api/pokeapi');
 const battleMusic = require('./battleMusic');
 
@@ -18,39 +21,33 @@ const styles = {
 };
 
 
-class RedirectingClassHomePage extends React.Component {
-  render() {
-    battleMusic.stopMusic();
-    return (
-      <Redirect to="/" />
+function RedirectingClassHomePage() {
+  battleMusic.stopMusic();
+  return (
+    <Redirect to="/" />
 
-    );
-  }
+  );
 }
 
-class RedirectingClassSelectPokemon extends React.Component {
-  render() {
-    battleMusic.stopMusic();
-    return (
-      <Redirect to="/SelectPokemon" />
-    );
-  }
+function RedirectingClassSelectPokemon() {
+  battleMusic.stopMusic();
+  return (
+    <Redirect to="/SelectPokemon" />
+  );
 }
 
 class HeroPokemon extends React.Component {
   render() {
-    battleMusic.playMusic();
-
-
-    const hero = this.props.hero;
+    const { hero } = this.props;
     const skills = hero.pokemonSkills;
-    const h_Health = this.props.heroHealth;
+    const { heroHealth } = this.props;
+    const { calculateDmg } = this.props;
 
     const style = {
       hero: {
         backgroundColor: '#12e23b',
         borderRadius: '10px',
-        width: `${h_Health * 1.5}px`,
+        width: `${heroHealth * 1.5}px`,
         height: '20px',
         border: 'white 2px solid',
 
@@ -83,24 +80,25 @@ class HeroPokemon extends React.Component {
           <br />
           <div className="pokemon_Health" style={style.hero} />
           <p style={{ textAlign: 'right' }}>
-HP :
-            {h_Health}
-&ensp;/&ensp;200
+            HP :
+            {heroHealth}
+            &ensp;/&ensp;200
           </p>
         </div>
         <table className="moveset_tb">
           <tbody>
             <tr>
-              <td className="td_left_top" onClick={() => this.props.calculateDmg(heroAttack())}>{skills[0]}</td>
+              <td className="td_left_top"><button type="button" className="skillBtn" onClick={() => calculateDmg(heroAttack())} onKeyPress={() => calculateDmg(heroAttack())}>{skills[0]}</button></td>
 
-              <td className="td_right_top" onClick={() => this.props.calculateDmg(heroAttack())}>{skills[1]}</td>
+              <td className="td_right_top"><button type="button" className="skillBtn" onClick={() => calculateDmg(heroAttack())} onKeyPress={() => calculateDmg(heroAttack())}>{skills[1]}</button></td>
 
               <td className="run_option" rowSpan="2"><Link className="runBTN" to="/SelectPokemon" onClick={() => battleMusic.stopMusic()}>Run Away</Link></td>
 
             </tr>
             <tr>
-              <td className="td_left_bot" onClick={() => this.props.calculateDmg(heroAttack())}>{skills[2]}</td>
-              <td className="td_right_bot" onClick={() => this.props.calculateDmg(heroAttack())}>{skills[3]}</td>
+              <td className="td_left_bot"><button type="button" className="skillBtn" onClick={() => calculateDmg(heroAttack())} onKeyPress={() => calculateDmg(heroAttack())}>{skills[2]}</button></td>
+
+              <td className="td_right_bot"><button type="button" className="skillBtn" onClick={() => calculateDmg(heroAttack())} onKeyPress={() => calculateDmg(heroAttack())}>{skills[3]}</button></td>
             </tr>
           </tbody>
         </table>
@@ -109,17 +107,23 @@ HP :
   }
 }
 
+HeroPokemon.propTypes = {
+  hero: PropTypes.shape,
+  heroHealth: PropTypes.number,
+  calculateDmg: PropTypes.func,
+};
+
 class EnemyPokemon extends React.Component {
   render() {
-    const enemy = this.props.enemy;
-    const e_Health = this.props.enemyHealth;
+    const { enemy } = this.props;
+    const { enemyHealth } = this.props;
 
 
     const style = {
       enemy: {
         backgroundColor: '#12e23b',
         borderRadius: '10px',
-        width: `${e_Health * 1.5}px`,
+        width: `${enemyHealth * 1.5}px`,
         height: '20px',
         border: 'white 2px solid',
       },
@@ -133,9 +137,9 @@ class EnemyPokemon extends React.Component {
           <br />
           <div className="enemy_Health" style={style.enemy} />
           <p style={{ textAlign: 'right' }}>
-HP :
-            {e_Health}
-&ensp;/&ensp;200
+            HP :
+            {enemyHealth}
+            &ensp;/&ensp;200
           </p>
         </div>
         <StyleRoot>
@@ -145,6 +149,11 @@ HP :
     );
   }
 }
+
+EnemyPokemon.propTypes = {
+  enemy: PropTypes.shape,
+  enemyHealth: PropTypes.number,
+};
 
 
 class Battle extends React.Component {
@@ -162,22 +171,8 @@ class Battle extends React.Component {
     this.dealDmgToHero = this.dealDmgToHero.bind(this);
   }
 
-  calculateDmg() {
-    const dmgValue = Math.floor(Math.random() * (60 - 1) + 1);
-    setTimeout(this.dealDmgToHero, 300);
-    this.setState({
-      enemyHealth: this.state.enemyHealth - dmgValue,
-    });
-  }
-
-  dealDmgToHero() {
-    const returnDmg = Math.floor(Math.random() * (50 - 1) + 1);
-    this.setState({
-      heroHealth: this.state.heroHealth - returnDmg,
-    });
-  }
-
   componentDidMount() {
+    /* eslint react/prop-types: 0 */
     const chosenPokemon = queryString.parse(this.props.location.search);
     pokeApi.fetchCombatants(
       chosenPokemon.HeroPokemon,
@@ -191,9 +186,25 @@ class Battle extends React.Component {
     });
   }
 
+  dealDmgToHero() {
+    const returnDmg = Math.floor(Math.random() * (50 - 1) + 1);
+    this.setState(prevState => ({
+      heroHealth: prevState.heroHealth - returnDmg,
+    }));
+  }
+
+  calculateDmg() {
+    const dmgValue = Math.floor(Math.random() * (60 - 1) + 1);
+    setTimeout(this.dealDmgToHero, 300);
+    this.setState(prevState => ({
+      enemyHealth: prevState.enemyHealth - dmgValue,
+    }));
+  }
 
   render() {
-    const loading = this.state.loading;
+    const { loading } = this.state;
+    let popuptext;
+
     if (loading === true) {
       return (
         <p>Starting up your game..</p>
@@ -201,7 +212,7 @@ class Battle extends React.Component {
     }
 
     if (this.state.heroHealth <= 0) {
-      var popuptext = window.confirm('Your pokemon has fainted! Try again?');
+      popuptext = window.confirm('Your pokemon has fainted! Try again?');
       if (popuptext === true) {
         return (
           <RedirectingClassSelectPokemon />
@@ -227,6 +238,7 @@ class Battle extends React.Component {
         );
       }
     } else if (this.state.heroHealth && this.state.enemyHealth > 0) {
+      battleMusic.playMusic();
       return (
         <div className="battleBox">
           <div className="battlegrounds">
