@@ -13,7 +13,10 @@ module.exports = {
       .then((response) => {
         const results = response.data;
         const pokeArr = results.find((pokemon) => {
-          if (pokemon.id === parseInt(entryId, radix)) { return pokemon; }
+          if (pokemon.id === parseInt(entryId, radix)) {
+            return pokemon;
+          }
+          return pokeArr;
         });
         return pokeArr;
       });
@@ -22,9 +25,9 @@ module.exports = {
   fetchCombatants(heroId, enemyId) {
     let fetchURL;
     if (parseInt(heroId, radix) > parseInt(enemyId, radix)) {
-      fetchURL = `${'http://localhost:3000/Pokemon' + '?id='}${enemyId}&id=${heroId}&_sort=id&_order=desc`;
+      fetchURL = `${'http://localhost:3000/Pokemon?id='}${enemyId}&id=${heroId}&_sort=id&_order=desc`;
     } else if (parseInt(heroId, radix) < parseInt(enemyId, radix)) {
-      fetchURL = `${'http://localhost:3000/Pokemon' + '?id='}${enemyId}&id=${heroId}&_sort=id&_order=asc`;
+      fetchURL = `${'http://localhost:3000/Pokemon?id='}${enemyId}&id=${heroId}&_sort=id&_order=asc`;
     }
     return axios.get(fetchURL)
       .then((response) => {

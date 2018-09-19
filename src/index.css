@@ -270,18 +270,26 @@ td{
 
 .td_left_top {
   border-top-left-radius: 20px;
+  height: 100%;
+  padding:0px;
 }
 
 .td_right_top {
   border-top-right-radius: 20px;
+  height: 100%;
+  padding:0px;
 }
 
 .td_left_bot {
   border-bottom-left-radius: 20px;
+  height: 100%;
+  padding:0px;
 }
 
 .td_right_bot {
   border-bottom-right-radius: 20px;
+  height: 100%;
+  padding:0px;
 }
 
 .run_option{
@@ -292,6 +300,18 @@ td{
 
 td:hover{
   background-color: wheat;
+}
+
+.skillBtn{
+  display:inline-block;
+  height: 100%;
+  width:100%;
+  padding:40px 0px 40px 0px;
+  font-size: 21pt;
+  color:teal;
+  background: none;
+  font-weight: bold;
+  border: none;
 }
 
 .runBTN{
