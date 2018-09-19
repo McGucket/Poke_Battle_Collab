@@ -204,12 +204,12 @@ class Battle extends React.Component {
   render() {
     const { loading } = this.state;
     let popuptext;
-
     if (loading === true) {
       return (
         <p>Starting up your game..</p>
       );
     }
+
 
     if (this.state.heroHealth <= 0) {
       popuptext = window.confirm('Your pokemon has fainted! Try again?');
@@ -225,6 +225,7 @@ class Battle extends React.Component {
         );
       }
     } else if (this.state.enemyHealth <= 0) {
+      /* global window */
       popuptext = window.confirm('Your pokemon has won! Want to try again?');
       if (popuptext === true) {
         return (
@@ -249,6 +250,7 @@ class Battle extends React.Component {
         </div>
       );
     }
+    return false;
   }
 }
 
