@@ -19,7 +19,7 @@ function GetPokemons(props) {
 }
 
 GetPokemons.propTypes = {
-  pokemons: PropTypes.array.isRequired,
+  pokemons: PropTypes.arrayOf.isRequired,
 };
 
 class Pokedex extends React.Component {
