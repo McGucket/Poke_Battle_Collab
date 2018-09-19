@@ -1,5 +1,5 @@
 const React = require('react');
-const Link = require('react-router-dom').Link;
+const { Link } = require('react-router-dom');
 const PropTypes = require('prop-types');
 const pokeApi = require('./api/pokeapi');
 const header = require('./PicturesUsed/Pokedex.png');
@@ -28,8 +28,6 @@ class Pokedex extends React.Component {
 
     this.state = {
       pokemons: [],
-      pokeResult: [],
-      pokeId: null,
     };
   }
 

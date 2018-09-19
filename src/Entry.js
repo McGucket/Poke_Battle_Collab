@@ -37,7 +37,7 @@ function GetEntry(props) {
 }
 
 GetEntry.propTypes = {
-  entryData: PropTypes.array.isRequired,
+  pokeData: PropTypes.shape,
 };
 
 class Entry extends React.Component {
@@ -45,13 +45,13 @@ class Entry extends React.Component {
     super(props);
 
     this.state = {
-      pokemon: [],
-      pokeId: null,
+      pokemon: {},
     };
   }
 
   componentDidMount() {
     const { match: { params } } = this.props;
+
     const entryId = params.id;
 
     pokeApi.getPokedexData(entryId)
@@ -67,12 +67,16 @@ class Entry extends React.Component {
       <div>
         <img className="pokedex_header" src={header} alt="title" />
         {!this.state.pokemon
-          ? <p>Loading</p>
+          ? <p>Fetching Entry..</p>
           : <GetEntry pokeData={this.state.pokemon} />
                 }
       </div>
     );
   }
 }
+
+Entry.propTypes = {
+  match: PropTypes.shape,
+};
 
 module.exports = Entry;
